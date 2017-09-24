@@ -1,23 +1,27 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
-public class LoadSceneAssets : MonoBehaviour {
-
+public class LoadScene : MonoBehaviour {
+	
 	void OnGUI(){
 		if(GUILayout.Button("LoadScene")){
-			StartCoroutine (LoadScene());
+			StartCoroutine (LoadScenes());
 		}
 	}
 
-	IEnumerator LoadScene(){
-		var myAssetBUndles = AssetBundle.LoadFromFile (Path.Combine(Application.streamingAssetsPath,"sceneasset"));
-		yield return myAssetBUndles;
+	IEnumerator LoadScenes(){
 
-		
+		var myAssetBundle = AssetBundle.LoadFromFile (Path.Combine (Application.streamingAssetsPath, "sceneasset"));
+		yield return myAssetBundle;
 
-		myAssetBUndles.Unload (false);
+//		WWW www = WWW.LoadFromCacheOrDownload(Path.Combine (Application.streamingAssetsPath,"sceneasset"),0);
+//		yield return www;
+//		var myAssetBundle = www.assetBundle;
 
+		SceneManager.LoadScene ("test",LoadSceneMode.Single);
 	}
 }
+
