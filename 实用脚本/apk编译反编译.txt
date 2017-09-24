@@ -1,0 +1,11 @@
+
+	apktool d **.apk	//反编译
+	AndroidManifest.xml	//apk的包名，应用名，版本号等信息都可以在这里找到。
+	修改应用icon，进入res目录，drawable。
+	apktool b 目录名	//回编
+	dist目录下生成了非签名的apk，复制到根目录，起名new.apk
+	//签名
+	jarsigner -keystore 签名文件 -signedjar 签名后apk名字 签名前apk名字
+	密钥库密码短语：unity3d
+	
+	
